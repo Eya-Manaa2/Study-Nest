@@ -1,0 +1,74 @@
+# Build automatique de l'Android App Bundle (.aab) pour le Play Store.
+#
+# Ce workflow se déclenche à chaque tag "v*" (ex: v1.0.0) ou manuellement.
+# Il signe l'app avec un keystore stocké dans les GitHub Secrets, jamais dans le code.
+#
+# SECRETS À CONFIGURER (Settings -> Secrets and variables -> Actions) :
+#   KEYSTORE_BASE64      : ton keystore .jks encodé en base64
+#                          (macOS/Linux : base64 -i release.jks | pbcopy)
+#   KEYSTORE_PASSWORD    : mot de passe du keystore
+#   KEY_PASSWORD         : mot de passe de la clé
+#   KEY_ALIAS            : alias de la clé (ex: studynest)
+#
+# NB : ce workflow suppose que le projet Flutter complet (avec les dossiers
+# android/ générés par `flutter create`) est à la racine du dépôt.
+
+name: Build Android App Bundle
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Generate launcher icons
+        run: dart run flutter_launcher_icons
+
+      - name: Generate native splash
+        run: dart run flutter_native_splash:create
+
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/release.jks
+
+      - name: Create key.properties
+        run: |
+          cat > android/key.properties <<EOF
+          storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword=${{ secrets.KEY_PASSWORD }}
+          keyAlias=${{ secrets.KEY_ALIAS }}
+          storeFile=release.jks
+          EOF
+
+      - name: Build App Bundle
+        run: flutter build appbundle --release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: studynest-release-aab
+          path: build/app/outputs/bundle/release/app-release.aab

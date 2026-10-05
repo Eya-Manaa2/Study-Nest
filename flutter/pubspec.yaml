@@ -1,0 +1,70 @@
+name: studynest
+description: Ton espace. Tes études. Tout organisé.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  google_fonts: ^6.2.1
+  shared_preferences: ^2.2.3
+  uuid: ^4.4.0
+  intl: ^0.19.0
+  file_picker: ^8.0.0+1
+  path_provider: ^2.1.1
+  http: ^1.2.0
+  open_file: ^3.3.2
+  flutter_local_notifications: ^17.0.0
+  timezone: ^0.9.2
+  speech_to_text: ^7.3.0
+  permission_handler: ^11.3.1
+  flutter_markdown: ^0.7.3
+  
+  # Firebase
+  firebase_core: ^3.0.0
+  firebase_auth: ^5.0.0
+  cloud_firestore: ^5.0.0
+  firebase_storage: ^12.0.0
+  google_sign_in: ^6.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.png
+    - assets/icon/app_icon.png
+    - assets/icon/splash_logo.png
+
+# Icône d'application (Android + iOS)
+# Générer avec : dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#F4F2FB"
+  adaptive_icon_foreground: "assets/icon/app_icon.png"
+
+# Écran de démarrage (splash) natif
+# Générer avec : dart run flutter_native_splash:create
+flutter_native_splash:
+  color: "#F4F2FB"
+  image: assets/icon/splash_logo.png
+  color_dark: "#12131A"
+  image_dark: assets/icon/splash_logo.png
+  android_12:
+    color: "#F4F2FB"
+    image: assets/icon/splash_logo.png
+    color_dark: "#12131A"
+    image_dark: assets/icon/splash_logo.png
+  fullscreen: true

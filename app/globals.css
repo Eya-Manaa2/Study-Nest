@@ -1,0 +1,247 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --font-sans: 'Manrope', 'Manrope Fallback', sans-serif;
+  --font-display: 'Fraunces', 'Fraunces Fallback', serif;
+}
+
+:root {
+  color-scheme: light;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* StudyNest Theme System */
+
+/* Theme: Clair (default) */
+.theme-clair {
+  --sn-bg: #FBF6F1;
+  --sn-surface: #FFFFFF;
+  --sn-surface2: #F4E9E2;
+  --sn-text: #241A1D;
+  --sn-muted: #8C7C82;
+  --sn-accent: #7C2333;
+  --sn-accent2: #B6536E;
+  --sn-line: #EEE1DA;
+  --sn-shadow: rgba(124, 35, 51, 0.14);
+  --sn-font-display: 'Fraunces', serif;
+}
+
+/* Theme: Sombre */
+.theme-sombre {
+  --sn-bg: #161119;
+  --sn-surface: #211A24;
+  --sn-surface2: #2A222E;
+  --sn-text: #F3ECEF;
+  --sn-muted: #A497A0;
+  --sn-accent: #E2536E;
+  --sn-accent2: #C97C93;
+  --sn-line: #372C39;
+  --sn-shadow: rgba(0, 0, 0, 0.5);
+  --sn-font-display: 'Fraunces', serif;
+}
+
+/* Theme: Sakura */
+.theme-sakura {
+  --sn-bg: #FFF2F6;
+  --sn-surface: #FFFFFF;
+  --sn-surface2: #FFE1EA;
+  --sn-text: #3B2530;
+  --sn-muted: #AD8492;
+  --sn-accent: #E8637F;
+  --sn-accent2: #F6A6BE;
+  --sn-line: #FBD9E2;
+  --sn-shadow: rgba(232, 99, 127, 0.18);
+  --sn-font-display: 'Playfair Display', serif;
+}
+
+/* Theme: Océan */
+.theme-ocean {
+  --sn-bg: #EAF6F8;
+  --sn-surface: #FFFFFF;
+  --sn-surface2: #D7EEF2;
+  --sn-text: #0F2E33;
+  --sn-muted: #5F8B91;
+  --sn-accent: #1C8CA3;
+  --sn-accent2: #59BFCE;
+  --sn-line: #C9E7EC;
+  --sn-shadow: rgba(28, 140, 163, 0.18);
+  --sn-font-display: 'Quicksand', sans-serif;
+}
+
+/* Theme: Galaxie */
+.theme-galaxie {
+  --sn-bg: #130E29;
+  --sn-surface: #1D1740;
+  --sn-surface2: #271E52;
+  --sn-text: #EDE9FB;
+  --sn-muted: #9C8FCB;
+  --sn-accent: #8B6CF0;
+  --sn-accent2: #C9A6FF;
+  --sn-line: #352A63;
+  --sn-shadow: rgba(139, 108, 240, 0.35);
+  --sn-font-display: 'Orbitron', sans-serif;
+}
+
+/* Theme: Bibliothèque */
+.theme-bibliotheque {
+  --sn-bg: #F5EEDC;
+  --sn-surface: #FFFCF6;
+  --sn-surface2: #EADCBC;
+  --sn-text: #3A2A16;
+  --sn-muted: #8F7A55;
+  --sn-accent: #8A5A2B;
+  --sn-accent2: #C08A46;
+  --sn-line: #E6D6AF;
+  --sn-shadow: rgba(138, 90, 43, 0.18);
+  --sn-font-display: 'EB Garamond', serif;
+}
+
+/* Theme: Forêt */
+.theme-foret {
+  --sn-bg: #EEF5E9;
+  --sn-surface: #FFFFFF;
+  --sn-surface2: #DBEACF;
+  --sn-text: #20301A;
+  --sn-muted: #6D8A5D;
+  --sn-accent: #4C7A3B;
+  --sn-accent2: #8FBF6E;
+  --sn-line: #D3E6C6;
+  --sn-shadow: rgba(76, 122, 59, 0.18);
+  --sn-font-display: 'Comfortaa', sans-serif;
+}
+
+/* Theme: Science */
+.theme-science {
+  --sn-bg: #EFF7F6;
+  --sn-surface: #FFFFFF;
+  --sn-surface2: #DBEEEC;
+  --sn-text: #1B2E35;
+  --sn-muted: #6E8B90;
+  --sn-accent: #1F8A94;
+  --sn-accent2: #F2B134;
+  --sn-line: #CFE8E4;
+  --sn-shadow: rgba(31, 138, 148, 0.2);
+  --sn-font-display: 'Space Mono', monospace;
+}
+
+/* Theme: Réseau */
+.theme-reseau {
+  --sn-bg: #EAF1FB;
+  --sn-surface: #FFFFFF;
+  --sn-surface2: #D7E6F7;
+  --sn-text: #0D2748;
+  --sn-muted: #5E7B9C;
+  --sn-accent: #1857A4;
+  --sn-accent2: #3FA9F5;
+  --sn-line: #C7DCF2;
+  --sn-shadow: rgba(24, 87, 164, 0.2);
+  --sn-font-display: 'Rajdhani', sans-serif;
+}
+
+/* Theme: Construction */
+.theme-construction {
+  --sn-bg: #FBF4E3;
+  --sn-surface: #FFFFFF;
+  --sn-surface2: #F6E4B8;
+  --sn-text: #241C0E;
+  --sn-muted: #8A7A55;
+  --sn-accent: #E0A106;
+  --sn-accent2: #2B2B2B;
+  --sn-line: #EEDBA0;
+  --sn-shadow: rgba(224, 161, 6, 0.28);
+  --sn-font-display: 'Oswald', sans-serif;
+}
+
+/* Screen animation */
+@keyframes snFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes snSlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.sn-screen-enter {
+  animation: snFadeIn 0.25s ease forwards;
+}
+
+.sn-sheet-enter {
+  animation: snSlideUp 0.25s ease forwards;
+}
